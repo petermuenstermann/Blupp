@@ -1,5 +1,5 @@
 # Blupp
-Controlling BiOrb aquarium illumination by ESP8285 board
+Controlling BiOrb aquarium illumination by ESP8266 board
 
 I bought a BiOrb LIFE Aquarium for my wife, recently.
 It was shipped with a nice multi-color LED illumination (MCR LED) with remote control, but without any automatic day/night cycle.
