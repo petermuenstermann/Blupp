@@ -23,7 +23,7 @@ To control the module, we have two choices:
 I chose the second way, because I did not have a IR sender module and I wanted to put the Wemos-Module inside the housing. Be shure to loose any warranty for the LED module.  
 The housing conststs of two plastic parts which are carefully sticked together by transparent glue. To seperate them, I needed a small, sharp screw driver, a lot of patience and some brute force.
 
-!(https://github.com/petermuenstermann/Blupp/blob/master/images/BiOrb_MCR_board.jpg "BiOrb MCR LED PC board")  
+![the CP board looks like:](https://github.com/petermuenstermann/Blupp/blob/master/images/BiOrb_MCR_board.jpg "BiOrb MCR LED PC board")  
 the position of the three pins of the IR receiver are marked with a green box.
 
 A brief analysis of the PC board showed, tha the module is controlled by a Microchip PIC16F1704 microcontroller.  
@@ -70,7 +70,21 @@ To send the code, we don't need the IRLib2 any more. The code can by synthesized
       }
     }
     
-The Signal normally is 'low', whereas the output of the R receiver is normally 'high' which means open-collector open.   
+The Signal normally is 'low', whereas the output of the IR Rreceiver is normally 'high' (which means open-collector open).   
+We add a open collector/drain transistor to the control output of the Wemos module, which gives a logical OR with the IR receiver and bypasses the problem with the 5V signals on the BiOrb PC board. So we can use the remote control and teh Wemos module simultaneously.
+
+## Wifi setup
+The wifi Setup is mainly taken from the _ESPWifiMulti_ examples for the Wemos module.
+The connection status is coded over the color of the BiOrb Lamp.
+
+## getting the network time
+The code is taken from the _NTP-TZ-DST_ example program.
+
+If the network time is received, the program iterates thru all the "lamp events" until the present daytime.
+
+## web server with remote control
+I found the very wonderful demo _FSBrowser_ based on the _ESP8266WebServer_ library 
+
 
 
 
