@@ -75,12 +75,15 @@ We add a open collector/drain transistor to the control output of the Wemos modu
 
 ## Wifi setup
 The wifi Setup is mainly taken from the _ESPWifiMulti_ examples for the Wemos module.
-The connection status is coded over the color of the BiOrb Lamp.
+The connection status is coded over the color of the BiOrb Lamp:  
+During initialization and the search for an access-point the leds are blinking orange.  
+If a connection is established, the color switches to green, otherwise red light appears.
 
 ## getting the network time
 The code is taken from the _NTP-TZ-DST_ example program.
 
-If the network time is received, the program iterates thru all the "lamp events" until the present daytime.
+If the network time is received, the program iterates thru all the "lamp events" until the present daytime.  
+This in not very elegant and the fish risk to get an epileptic attack due to the stroboskope like flashing. The more elegant way would be to show the last patterns, only.
 
 ## web server with remote control
 I found the very wonderful demo _FSBrowser_ based on the _ESP8266WebServer_ library 
